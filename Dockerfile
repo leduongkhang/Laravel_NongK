@@ -35,6 +35,20 @@ EXPOSE 80
 # Đảm bảo DocumentRoot = public/
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
+# Thêm chỉ định index.php cho Laravel
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/conf-available/laravel.conf
+
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html/public\n\
+    <Directory /var/www/html/public>\n\
+        AllowOverride All\n\
+        Options Indexes FollowSymLinks\n\
+        Require all granted\n\
+        DirectoryIndex index.php index.html\n\
+    </Directory>\n\
+</VirtualHost>' > /etc/apache2/sites-available/laravel.conf \
+&& a2ensite laravel.conf && a2dissite 000-default.conf
+
 RUN echo '<Directory /var/www/html/public>\n\
     AllowOverride All\n\
     Require all granted\n\
