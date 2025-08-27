@@ -14,18 +14,18 @@
 
     {{-- <title>{{ $meta_title }}</title> --}}
     <title>Bán sản phẩm thuốc bảo vệ thực vật</title>
-    <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/prettyPhoto.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/price-range.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/main.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/responsive.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/price-range.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/sweetalert.css')}}" rel="stylesheet">
 
-    <link href="{{asset('public/frontend/css/lightslider.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/lightgallery.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/prettify.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/lightslider.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/lightgallery.min.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/prettify.css')}}" rel="stylesheet">
 
     
 
@@ -33,7 +33,7 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="{{('public/frontend/images/ico/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{('frontend/images/ico/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="{{ URL::to('/') }}"><img src="{{('public/frontend/imagess/logo.png')}}" alt="" /></a>
+                            <a href="{{ URL::to('/') }}"><img src="{{('frontend/imagess/logo.png')}}" alt="" /></a>
                         </div>
                         
                     </div>
@@ -198,7 +198,7 @@
                                 
                                 <div style="text-align: center;">
                                     <img alt="{{ $slide->slider_desc }}" 
-                                         src="{{ asset('public/upload/slider/'.$slide->slider_image) }}" 
+                                         src="{{ asset('upload/slider/'.$slide->slider_image) }}" 
                                          style="max-width: 100%; height: 200px; object-fit: cover; display: inline-block;" 
                                          class="img img-responsive">
                                 </div>
@@ -345,20 +345,20 @@
         
     </footer><!--/Footer-->
     
-    <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
-    <script src="{{asset('public/frontend/js/jquery.scrollUp.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
     
-    <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     
-    <script src="{{asset('public/frontend/js/price-range.js')}}"></script>
+    <script src="{{asset('frontend/js/price-range.js')}}"></script>
     
-    <script src="{{asset('public/frontend/js/main.js')}}"></script>
-    <script src="{{asset('public/frontend/js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
     
-    <script src="{{asset('public/frontend/js/lightslider.js')}}"></script>
-    <script src="{{asset('public/frontend/js/lightgallery-all.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/prettify.js')}}"></script>
+    <script src="{{asset('frontend/js/lightslider.js')}}"></script>
+    <script src="{{asset('frontend/js/lightgallery-all.min.js')}}"></script>
+    <script src="{{asset('frontend/js/prettify.js')}}"></script>
 
     <script type="text/javascript">
          $(document).ready(function() {
