@@ -50,7 +50,7 @@
                             <ul class="nav nav-pills">
                                 <li><a href="tel:+84941837191" alt=""><i class="fa fa-phone" class="btn btn-success"></i> +84 94 18 37 191</a></li>
                                 <li><a href="https://mail.google.com/mail/"><i class="fa fa-envelope"></i> Khang_dth215947@student.agu.edu.vn</a></li>
-                                <li><a href="/shopnongduoclaravel/admin"><i class="fa fa-star"></i> Admin Quản lý</a></li>
+                                <li><a href="/admin"><i class="fa fa-star"></i> Admin Quản lý</a></li>
                             </ul>
                         </div>
                     </div>
