@@ -55,7 +55,7 @@
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{ $sli->slider_name }}</td>
-            <td><img src="public/upload/slider/{{ $sli->slider_image }}" height="200" width="500"></td>
+            <td><img src="upload/slider/{{ $sli->slider_image }}" height="200" width="500"></td>
             <td>{{ $sli->slider_desc }}</td>
 
 

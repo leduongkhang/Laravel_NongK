@@ -15,8 +15,8 @@
 						<div class="col-sm-5">
 								<ul id="imageGallery">
 									@foreach($gallery as $key => $gal)
-										  <li data-thumb="{{asset('public/upload/gallery/'.$gal->gallery_image) }}" data-src="{{asset('public/upload/gallery/'.$gal->gallery_image) }}">
-										    <img width="100%" alt="{{ $gal->gallery_name }}" src="{{asset('public/upload/gallery/'.$gal->gallery_image) }}" />
+										  <li data-thumb="{{asset('upload/gallery/'.$gal->gallery_image) }}" data-src="{{asset('upload/gallery/'.$gal->gallery_image) }}">
+										    <img width="100%" alt="{{ $gal->gallery_name }}" src="{{asset('upload/gallery/'.$gal->gallery_image) }}" />
 										  </li>
 									@endforeach
 
@@ -135,7 +135,7 @@
                                             <input type="hidden" value="1" class="cart_product_qty_{{$lienquan->product_id}}">
 
                                             <a href="{{URL::to('/chi-tiec-san-pham/'.$lienquan->product_id)}}">
-                                                <img src="{{URL::to('public/upload/product/'.$lienquan->product_image)}}" alt="" />
+                                                <img src="{{URL::to('upload/product/'.$lienquan->product_image)}}" alt="" />
                                                 <h2>{{number_format($lienquan->product_price).' '.'VNĐ'}}</h2>
                                                 <p>{{$lienquan->product_name}}</p>
 

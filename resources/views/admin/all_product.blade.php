@@ -65,7 +65,7 @@
             <td>{{ $pro->product_quantity }}</td>
             <td><a href="{{ url('/add-gallery/'.$pro->product_id) }}">Thêm thư viện ảnh</a></td>
             <td>{{ $pro->product_price }}</td>
-            <td><img src="public/upload/product/{{ $pro->product_image }}" height="200" width="200"></td>
+            <td><img src="upload/product/{{ $pro->product_image }}" height="200" width="200"></td>
             <td>{{ $pro->category_name }}</td>
             <td>{{ $pro->brand_name}}</td>
 
