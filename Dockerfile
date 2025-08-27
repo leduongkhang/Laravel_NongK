@@ -18,6 +18,9 @@ COPY . .
 # Cài đặt Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Fix quyền cho storage và cache
+RUN chmod -R 775 storage bootstrap/cache
+
 # Tạo storage link & clear cache
 RUN php artisan storage:link || true
 RUN php artisan config:clear && php artisan route:clear && php artisan cache:clear
