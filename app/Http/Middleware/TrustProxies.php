@@ -12,7 +12,8 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-    protected $proxies;
+    // Tin cậy tất cả proxy (Render dùng proxy để forward HTTPS)
+    protected $proxies = '*';
 
     /**
      * The headers that should be used to detect proxies.
