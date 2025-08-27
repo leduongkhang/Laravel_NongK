@@ -1,7 +1,7 @@
 # Base image PHP + Apache
 FROM php:8.2-apache
 
-# Cài các extension PHP cần cho Laravel
+# Cài extension PHP cần thiết cho Laravel
 RUN apt-get update && apt-get install -y \
     libzip-dev unzip git curl libpng-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_mysql zip gd mbstring bcmath
@@ -19,43 +19,35 @@ WORKDIR /var/www/html
 COPY . .
 
 # Cài đặt Laravel dependencies (không lấy dev)
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
-# Laravel optimize + quyền cho storage
-RUN chmod -R 775 storage bootstrap/cache && \
-    php artisan storage:link || true && \
-    php artisan config:clear && \
-    php artisan route:clear && \
-    php artisan cache:clear && \
-    php artisan view:clear
+# Laravel optimize (không bắt lỗi khi lần đầu chạy)
+RUN php artisan config:clear || true && \
+    php artisan route:clear || true && \
+    php artisan cache:clear || true && \
+    php artisan view:clear || true && \
+    php artisan storage:link || true
 
-# Apache sẽ phục vụ Laravel từ thư mục public/
-EXPOSE 80
+# Fix quyền cho storage & cache (Apache user: www-data)
+RUN chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
-# Đảm bảo DocumentRoot = public/
+# Cấu hình Apache DocumentRoot -> public/
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
-# Thêm chỉ định index.php cho Laravel
-RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/conf-available/laravel.conf
-
+# Tạo VirtualHost Laravel
 RUN echo '<VirtualHost *:80>\n\
     DocumentRoot /var/www/html/public\n\
     <Directory /var/www/html/public>\n\
         AllowOverride All\n\
         Options Indexes FollowSymLinks\n\
         Require all granted\n\
-        DirectoryIndex index.php index.html\n\
     </Directory>\n\
 </VirtualHost>' > /etc/apache2/sites-available/laravel.conf \
 && a2ensite laravel.conf && a2dissite 000-default.conf
 
-RUN echo '<Directory /var/www/html/public>\n\
-    AllowOverride All\n\
-    Require all granted\n\
-</Directory>' > /etc/apache2/conf-available/laravel.conf \
-&& a2enconf laravel
+# Expose port 80
+EXPOSE 80
 
-RUN a2enmod rewrite
-
-
+# Start Apache
 CMD ["apache2-foreground"]
