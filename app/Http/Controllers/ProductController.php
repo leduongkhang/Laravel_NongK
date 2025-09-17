@@ -186,6 +186,7 @@ class ProductController extends Controller
         $detail_product = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand_product','tbl_brand_product.brand_id','=','tbl_product.brand_id')
+        ->where('tbl_product.product_quantity','>',0)
         ->where('tbl_product.product_id',$product_id)->get();
 
         foreach($detail_product as $key => $value){
@@ -209,6 +210,7 @@ class ProductController extends Controller
         $related_product = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand_product','tbl_brand_product.brand_id','=','tbl_product.brand_id')
+        ->where('tbl_product.product_quantity','>',0)
         ->where('tbl_category_product.category_id',$category_id)->whereNotIn('tbl_product.product_id',[$product_id])->get();
 
         return view('pages.sanpham.show_detail')->with('category',$cate_product)->with('brand',$brand_product)->with('product_detail',$detail_product)->with('related',$related_product)->with('gallery',$gallery)

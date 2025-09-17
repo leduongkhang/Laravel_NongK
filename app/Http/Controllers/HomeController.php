@@ -44,7 +44,7 @@ class HomeController extends Controller
         // ->join('tbl_brand_product','tbl_brand_product.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
 
-        $new_product = DB::table('tbl_product')->where('product_status','1')->orderby('product_id','desc')->limit(6)->get();
+        $new_product = DB::table('tbl_product')->where('tbl_product.product_quantity','>',0)->where('product_status','1')->orderby('product_id','desc')->limit(6)->get();
 
         
 
@@ -61,7 +61,7 @@ class HomeController extends Controller
 
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id','desc')->get();
 
-        $all_product = DB::table('tbl_product')->where('product_status','1')->orderby('product_id','asc')->paginate(6);
+        $all_product = DB::table('tbl_product')->where('tbl_product.product_quantity','>',0)->where('product_status','1')->orderby('product_id','asc')->paginate(6);
 
         return view('pages.all_product')->with('all_product',$all_product)->with('category',$cate_product)->with('brand',$brand_product)->with('slider',$slider);
     }
@@ -78,7 +78,7 @@ class HomeController extends Controller
         // ->join('tbl_brand_product','tbl_brand_product.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
 
-         $search_product = DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->where('product_status','1')->get();
+         $search_product = DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->where('tbl_product.product_quantity','>',0)->where('product_status','1')->get();
 
         return view('pages.sanpham.search')->with('category',$cate_product)->with('brand',$brand_product)->with('search_product',$search_product)->with('slider',$slider);
     }

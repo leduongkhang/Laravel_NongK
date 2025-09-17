@@ -90,7 +90,9 @@ class CategoryProduct extends Controller
 
         $category_by_id = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_product.category_id','=','tbl_category_product.category_id')
-        ->where('tbl_product.category_id',$category_id)->paginate(6);
+        ->where('tbl_product.category_id',$category_id)
+        ->where('tbl_product.product_quantity','>',0)
+        ->where('tbl_product.product_status','1')->paginate(6);
         foreach($cate_product as $key => $val){
             //seo
             $meta_desc = $val->category_desc;
